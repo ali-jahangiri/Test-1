@@ -16,8 +16,8 @@ const App = () => {
         }
     }
 
-
     const inputValueChangeHandler = e => setNumber(e.target.value.slice(0, 4));
+
 
     return (
         <div>
