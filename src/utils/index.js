@@ -1,13 +1,8 @@
 export function factorial(userInt) {
-    if (userInt === 0)
-        return '1'
+    if (userInt === 0) return '1';
+    if (!userInt) return '';
 
-    if (!userInt)
-        return ''
-
-    var i, nextNumber, carret,
-
-        result = userInt.toString().split('').reverse().map(Number)
+    let i, nextNumber, carret, result = userInt.toString().split('').reverse().map(Number);
 
     while (--userInt) {
         i = carret = 0

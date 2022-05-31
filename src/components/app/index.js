@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { factorial } from '../../utils';
+import ResultBox from './ResultBox';
 import styles from './styles.module.css'
 
 const App = () => {
@@ -16,35 +16,28 @@ const App = () => {
         }
     }
 
+
+    const inputValueChangeHandler = e => setNumber(e.target.value.slice(0, 4));
+
     return (
         <div>
-            <h2 className={styles.appTitle}>
-                Factorial!
-            </h2>
+            <h2 className={styles.appTitle}>Factorial!</h2>
             <br />
             <label htmlFor="number">Enter a number from 0 to 9999</label>
             <input
+                id='number'
                 className={styles.numberInput}
                 type="number"
                 name="number"
                 value={number}
-                onChange={(event) => setNumber(event.target.value.slice(0, 5))}
+                onChange={inputValueChangeHandler}
             />
             <br />
             <button onClick={addNumberList}>Add For Calculation</button>
             <hr />
             <h2>Output</h2>
             <ul>
-                {numberList.map(
-                    (num) => <li key={num} className={styles.listItem}>
-                        <strong>Result of {num}! is:</strong>
-                        <br />
-                        <code>{factorial(num).slice(0, 200)}...</code>
-                        <button className={styles.smallButton} onClick={() => {
-                            navigator.clipboard.writeText(factorial(num))
-                        }}>Copy</button>
-                    </li>
-                )}
+                {numberList.map((num , i) => <ResultBox num={num} key={i} />)}
             </ul>
         </div>
     );
